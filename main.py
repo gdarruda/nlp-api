@@ -5,13 +5,8 @@ import spacy
 app = FastAPI()
 nlp = spacy.load("pt_core_news_sm")
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World Gabriel!"}
-
 @app.get("/entities")
 async def root(text: str):
-    # "!"
     return [{"entity": ent.text,
              "startChar": ent.start_char,
              "endChar": ent.end_char,
